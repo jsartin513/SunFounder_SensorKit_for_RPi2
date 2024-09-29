@@ -133,6 +133,14 @@ def display_message(message):
 			tmp = tmp[1:]
 			time.sleep(0.8)
 			LCD1602.clear()
+			
+def display_message_once(message):
+	tmp = message
+	for i in range(0, len(message)):
+		LCD1602.write(0, 0, tmp)
+		tmp = tmp[1:]
+		time.sleep(0.8)
+		LCD1602.clear()
 
 
 def main():
@@ -144,7 +152,7 @@ def main():
 			humidity, temperature = result
 			result_string = "humidity: %s %%,  Temperature: %s C`" % (humidity, temperature)
 			LCD1602.clear()
-			display_message(result_string)
+			display_message_once(result_string)
 			print ("humidity: %s %%,  Temperature: %s C`" % (humidity, temperature))
 		time.sleep(1)
 
